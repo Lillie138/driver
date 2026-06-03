@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>装货须知确认</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 15px;
+            color: #333;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #d9534f;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .company-name {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .notice-box {
+            background-color: #fff9f9;
+            border: 1px solid #ffccd0;
+            padding: 15px;
+            border-radius: 8px;
+            height: 320px;
+            overflow-y: scroll; 
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .notice-box h3 {
+            color: #333;
+            font-size: 18px;
+            margin-top: 15px;
+            border-left: 4px solid #d9534f;
+            padding-left: 8px;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed #d9534f;
+        }
+        input[type="checkbox"] {
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+        .checkbox-label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #d9534f;
+            cursor: pointer;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            background-color: #4CAF50; 
+            color: white;
+            padding: 16px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            text-decoration: none;
+        }
+        .submit-btn:active {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>装货须知（外来司机专用）</h2>
+    <div class="company-name">四川省眉山市金庄新材料科技有限公司</div>
+    
+    <div class="notice-box">
+        <p>为规范厂区装货作业，保障人员、车辆及货物安全，杜绝各类安全事故与作业问题，所有进厂装货的外来司机须严格遵守本须知规定，全程服从厂区管理人员及装卸人员调度安排。</p>
+        
+        <h3>一、进厂规范</h3>
+        <p>1. 车辆及司机进厂前，须在门卫处主动登记，出示有效驾驶证、行驶证，配合信息核查，禁止无证、私自进厂。</p>
+        <p>2. 进厂车辆严格按照指定路线低速行驶、定点停放，严禁超速、逆行、随意停靠、鸣笛扰民。</p>
+        <p>3. 司机及随车人员进厂后，严禁吸烟、动火，严禁触碰厂区各类设备、管线，禁止擅自进入生产、办公等非作业禁区。</p>
+        <p>4. 仅限必要随车作业人员进厂，无关人员禁止入内，厂区内严禁嬉戏打闹、随意走动。</p>
+        
+        <h3>二、装货作业规范</h3>
+        <p>1. 车辆抵达装货区域后，平稳停靠、拉紧手刹、完全熄火并关闭总电源，坡道区域做好防滑溜措施，装货全程禁止移动、启动车辆。</p>
+        <p>2. 装货期间司机全程在岗监装，配合核对货物型号、数量，杜绝错装、漏装、少装问题。</p>
+        <p>3. 严格遵守装载标准，严禁超载、超高、超宽装载，货物须堆放整齐、绑扎牢固，避免破损、洒落。</p>
+        <p>4. 装货完成后，仔细检查货物固定、车辆周边安全情况，确认无误并经现场人员确认后，方可有序离场。</p>
+        
+        <h3>三、附则说明</h3>
+        <p>凡违反本须知规定，造成厂区设备损坏、货物损失、安全事故或秩序混乱的，相关责任由涉事司机及所属运输方全额承担。</p>
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="agreeCheckbox" onchange="toggleButton()">
+        <label for="agreeCheckbox" class="checkbox-label">我已认真阅读并承诺遵守以上规定</label>
+    </div>
+    
+    <button id="submitBtn" class="submit-btn" onclick="goToRegister()" disabled style="background-color: #cccccc; cursor: not-allowed;">请先勾选确认</button>
+</div>
+
+<script>
+    // 检查司机有没有勾选框框，勾选了按钮才允许点击
+    function toggleButton() {
+        var checkbox = document.getElementById('agreeCheckbox');
+        var btn = document.getElementById('submitBtn');
+        if(checkbox.checked) {
+            btn.disabled = false;
+            btn.style.backgroundColor = "#4CAF50";
+            btn.style.cursor = "pointer";
+            btn.innerText = "去填写登记信息";
+        } else {
+            btn.disabled = true;
+            btn.style.backgroundColor = "#cccccc";
+            btn.style.cursor = "not-allowed";
+            btn.innerText = "请先勾选确认";
+        }
+    }
+
+    // 点击后跳转到你的腾讯文档收集表
+    function goToRegister() {
+        // 这里已经放上了你专属的腾讯文档链接
+        window.location.href = "https://docs.qq.com/form/page/DZExYWE9wcXZncnhr";
+    }
+</script>
+
+</body>
+</html>
